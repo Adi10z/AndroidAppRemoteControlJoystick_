@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidAppRemoteControlJoystick</string>
+    <string name="enter_ip">Enter IP</string>
+    <string name="enter_port">Enter Port</string>
+    <string name="connect">CONNECT</string>
+
+</resources>
