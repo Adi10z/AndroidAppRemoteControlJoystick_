@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.example.androidappremotecontroljoystick.view_model.ViewModel" />
@@ -71,27 +70,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingLeft="16dp"
-                android:paddingTop="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
                 android:weightSum="10">
 
-                <!-- Joystick and Throttle -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:orientation="horizontal">
 
-                    <!-- Joystick -->
                     <com.example.androidappremotecontroljoystick.views.JoystickActivity
                         android:id="@+id/joystickActivity"
                         android:layout_width="400dp"
                         android:layout_height="400dp"
                         tools:ignore="MissingConstraints" />
 
-                    <!-- Throttle -->
                     <SeekBar
                         android:id="@+id/throttle"
                         android:layout_width="360dp"
@@ -103,14 +99,12 @@
 
                 </RelativeLayout>
 
-                <!-- Rudder Layout -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="8"
                     android:orientation="vertical">
 
-                    <!-- Rudder -->
                     <SeekBar
                         android:id="@+id/rudder"
                         android:layout_width="match_parent"

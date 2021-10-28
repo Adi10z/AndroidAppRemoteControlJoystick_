@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
-//import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
 import com.example.androidappremotecontroljoystick.Model.FGPlayer;
 import com.example.androidappremotecontroljoystick.view_model.ViewModel;
@@ -14,63 +13,30 @@ import com.example.androidappremotecontroljoystick.databinding.ActivityMainBindi
 public class MainActivity extends AppCompatActivity {
 
     private ViewModel viewModel;
-    //private ActivityMainBinding binding;
+    private ActivityMainBinding binding;
 
     //@SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        //setContentView(R.layout.activity_main);
-        ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        //setContentView(R.layout.activity_joystick);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         FGPlayer fgPlayer = new FGPlayer();
         this.viewModel = new ViewModel(fgPlayer);
-        activityMainBinding.setViewModel(viewModel);
+        binding.setViewModel(viewModel);
 
-        activityMainBinding.joystickActivity.joystickListener = (a, e) -> {
-            //viewModel.newSetAileronAndElevator(ail / activityMainBinding.JoystickActivity.curR, ele / activityMainBinding.JoystickActivity.curR);
-            viewModel.newSetAileron(a / activityMainBinding.joystickActivity.curR);
-            viewModel.newSetElevator(e  / activityMainBinding.joystickActivity.curR);
+        binding.joystickActivity.joystickListener = (a, e) -> {
+            //viewModel.newSetAileronAndElevator(ail / binding.JoystickActivity.curR, ele / binding.JoystickActivity.curR);
+            viewModel.newSetAileron(a / binding.joystickActivity.curR);
+            viewModel.newSetElevator(e  / binding.joystickActivity.curR);
         };
 
-        activityMainBinding.connectButton.setOnClickListener(v -> {
+        binding.connectButton.setOnClickListener(v -> {
             try {
-                new Thread(() -> viewModel.connect(activityMainBinding.ipText.getText().toString(), Integer.parseInt(activityMainBinding.portText.getText().toString()))).start();
+                new Thread(() -> viewModel.connect(binding.ipText.getText().toString(), Integer.parseInt(binding.portText.getText().toString()))).start();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
-
-        activityMainBinding.throttle.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int prog, boolean fromUser) {
-                int pDiv = prog / 100;
-                viewModel.newSetThrottle(pDiv);
-            }
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        activityMainBinding.rudder.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int prog, boolean fromUser) {
-                int pMinus = prog - 50;
-                int pMinusDiv = pMinus / 50;
-                viewModel.newSetRudder(pMinusDiv);
-            }
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
 
         /*
         editIp = (EditText) findViewById(R.id.editIp);
@@ -130,6 +96,36 @@ public class MainActivity extends AppCompatActivity {
         });
 
          */
+
+        binding.throttle.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int prog, boolean fromUser) {
+                int pDiv = prog / 100;
+                viewModel.newSetThrottle(pDiv);
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        binding.rudder.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int prog, boolean fromUser) {
+                int pMinus = prog - 50;
+                int pMinusDiv = pMinus / 50;
+                viewModel.newSetRudder(pMinusDiv);
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
     }
 /*
     public void OnClickConnection (View MainActivity) {

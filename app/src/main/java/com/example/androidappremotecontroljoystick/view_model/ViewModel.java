@@ -1,11 +1,8 @@
 package com.example.androidappremotecontroljoystick.view_model;
 
-//import android.support.v7.app.AppCompatActivity;
-
 import com.example.androidappremotecontroljoystick.Model.FGPlayer;
 
 public class ViewModel {
-
 
     //private EditText ip;
     //private EditText port;
@@ -65,12 +62,10 @@ public class ViewModel {
 
     public void newSetAileron(double aileron) {
         this.fgPlayer.setAileron(aileron);
-        //
     }
 
     public void newSetElevator(double elevator) {
         this.fgPlayer.setElevator(elevator);
-        //
     }
 
     public void newSetRudder(double rudder) {
@@ -88,7 +83,5 @@ public class ViewModel {
         //    fgPlayer.setThrottle(newThrottle);
         //}
     }
-
-
 }
 

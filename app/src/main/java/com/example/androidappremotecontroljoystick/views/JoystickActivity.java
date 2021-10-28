@@ -37,7 +37,6 @@ public class JoystickActivity extends View {
     private Paint background = new Paint();
     private Paint outerCircle = new Paint();
     private Paint innerCircle = new Paint();
-
     private final Paint paintColors = new Paint();
     private double x;
     private double y;
@@ -50,7 +49,6 @@ public class JoystickActivity extends View {
     public JoystickListener joystickListener;
     //private double WidthdivTwo;
     //private double HeightdivTwo;
-
     private boolean stopMovement = true;
     private float widthStart;
     private float widthEnd;
@@ -97,9 +95,9 @@ public class JoystickActivity extends View {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        paintColors.setAntiAlias(true);
         double inCurX;
         double inCurY;
+        paintColors.setAntiAlias(true);
         this.curX = inCurX = (float)getWidth() / 2;
         this.curY = inCurY = (float)getHeight() / 2;
         paintColors.setColor(Color.BLACK);
